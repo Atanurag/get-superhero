@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html >
+<head>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fresca&display=swap" rel="stylesheet"> 
+<!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+
+ <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Superhero</title>
+
+<style>
+
+.mobilebtn{
+  margin: 22px 0px;
+
+}
+
+
+.active{
+text-decoration: none;
+padding: 1px;
+background-color: red;
+border-radius:5px ;
+color:white!important;
+
+}
+/*
+@media screen and (min-width: 992px){
+.container, .container-lg, .container-md, .container-sm {
+  max-width: 600px;
+}
+}
+*/
+@media screen and (max-width: 500px){
+
+.mobilediv{
+  width: 285px!important;
+}
+.mobilebtn{
+width: 250px!important;
+margin: auto!important;
+}
+
+.seardiv{
+width: 50%!important;
+
+
+}.svgg{
+z-index: 999999 !important;
+width: 26px !important;
+position: absolute !important;
+top: -1%!important;
+right: 25% !important;
+color: #B9B9B9 !important;
+
+}
+}
+
+
+@media screen and  (min-device-width: 481px) and (max-device-width:  915px) and (orientation:landscape)   {
+
+.svgg{
+z-index: 999999 !important;
+width: 26px !important;
+position: absolute !important;
+top: -1% !important;
+right: 15% !important;
+color: #B9B9B9 !important;
+
+}
+}
+
+
+</style>
+
+
+</head>
+<body style="background-image: linear-gradient(to right, #2c1499,#3a1982,#43057d,#3c065c);  ">
+
+
+<h1 class="text-center mt-3" style="font-family: 'Fresca', sans-serif;color: orange;" > Superhero</h1>
+
+
+<div style="width:80%;height: 100%;background-color: black;margin: auto;display: flex;flex-wrap: wrap;justify-content: space-around;border-radius: 22px;padding: 17px;">
+  
+
+
+  
+<div class="d-flex justify-content-around flex-wrap">
+  
+<div class=""style="width:250px;">
+  
+<img src="https://www.superherodb.com/pictures2/portraits/10/100/85.jpg" style="width:100%;margin-top: 11px;margin-bottom: 11px" id="immgg">
+
+</div>
+<div style="width:500px; text-align: center;position: relative">
+
+<div style="width:70%;margin: auto;height: 30px;background-color: black;border-radius:55px;"class="seardiv">
+  <input type="" name="" placeholder="enter superhero"style="width:100%; border: none;outline: none;height: 100%;border-radius:35px;background-color: #101017;color: white;padding: 0 12px;"id="inputt">
+
+
+<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 svgg" viewBox="0 0 20 20" fill="currentColor"height='34'width='344'style="width: 26px; position: absolute; top:-1%; right:15%; color: #B9B9B9 ;bottom: 6%;
+ z-index:999999 ; border-radius: 33px;cursor: pointer;"id="btn" >
+  <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
+</svg>
+</div>
+
+
+
+  <div class="mobilebtn"id="inputdispay" style="display: none">
+    <a style="color: #f25816;cursor: pointer;text-decoration: none;"id="power" >powerstats</a>&nbsp;
+     <a  style="color: #f25816;cursor: pointer;text-decoration: none;"id="biogra">biography</a>&nbsp;
+      <a  style="color: #f25816;cursor: pointer;text-decoration: none;"id="appear">appearance</a>&nbsp; 
+      <a  style="color: #f25816;cursor: pointer;text-decoration: none;"id="wor">work</a>&nbsp;
+       <a  style="color: #f25816;cursor: pointer;text-decoration: none;"id="conne">connections</a>
+     </div>
+<p style="color: #6c6c78;" id="name" ></p>
+<p  style="color: #6c6c78;"id="error"></p>
+ <div style="display:flex;justify-content: space-around;flex-wrap: wrap !important;"id="iputtextnone">
+
+
+
+  <div style="width:200px; height:100%;text-align: center"class="mobilediv">
+
+<p style="color: #6c6c78;" id="sttext"></p>
+<p style="color: #6c6c78;"id="ndtext"></p>
+<p style="color: #6c6c78;"id="rddtext"></p></div>
+<div class="mobilediv"style="width: 200px; height:100%;text-align: center">
+
+<p style="color: #6c6c78;"id="rthtext"></p>
+<p style="color: #6c6c78;"id="fthtext"></p>
+<p style="color: #6c6c78;"id="sthtext"></p>
+
+</div>
+</div>
+</div>
+</div>
+
+
+
+</div>
+
+<script>
+
+//boolean
+
+let powcheck;
+let biocheck;
+let appcheck;
+let workcheck;
+let conneccheck;
+//boolean
+
+
+
+//paragraphs
+let immgg=document.getElementById('immgg');
+let name=document.getElementById('name');
+let sttext=document.getElementById('sttext');
+let ndtext=document.getElementById('ndtext');
+let rddtext=document.getElementById('rddtext');
+let rthtext=document.getElementById('rthtext');
+let fthtext=document.getElementById('fthtext');
+let sthtext=document.getElementById('sthtext');
+
+let errorr=document.getElementById('error');
+
+let imgurl;
+
+//paragraphs
+let inpu;
+let inputdispay=document.getElementById('inputdispay');
+let iputtextnone=document.getElementById('iputtextnone');
+let inputt=document.getElementById('inputt');
+inputt.addEventListener('input',()=>{
+
+inpu=inputt.value
+
+if(inpu.length>0){
+inputdispay.style.display="revert"
+iputtextnone.style.display="flex"
+name.style.display="revert"
+}
+else{
+  power.classList.remove("active");
+appear.classList.remove("active");
+wor.classList.remove("active");
+ conne.classList.remove("active");
+biogra.classList.remove("active");
+  immgg.src="https://www.superherodb.com/pictures2/portraits/10/100/85.jpg"
+  name.textContent=""
+sttext.textContent=""
+ndtext.textContent=""
+rddtext.textContent=""
+rthtext.textContent=""
+fthtext.textContent=""
+sthtext.textContent=""
+
+inputdispay.style.display="none"
+iputtextnone.style.display="none"
+name.style.display="none"
+}
+
+});
+let btn=document.getElementById('btn');
+let power=document.getElementById('power');
+let biogra=document.getElementById('biogra');
+let appear=document.getElementById('appear');
+let wor=document.getElementById('wor');
+let conne=document.getElementById('conne');
+
+
+
+
+var alldata={
+};
+
+
+
+const api=()=>{
+
+
+  let resp=fetch(`https://superheroapi.com/api.php/1182632602590537/search/${inpu}`).then((ress)=>ress.json()).then((data)=>{
+ 
+//initialdataforuser
+  
+imgurl=data.results[0].image.url
+   name.textContent=inputt.value;
+ immgg.src=imgurl;
+sttext.textContent=alldata.biogrfullnamst1
+ndtext.textContent=alldata.biogrplacebirthend2
+rddtext.textContent=alldata.biografirstapperacerdtx3
+rthtext.textContent=alldata.biograpublisherfthtx4
+fthtext.textContent=alldata.biograaligmesixthhtx5
+sthtext.textContent=""
+errorr.innerText="";
+//initialdataforuser
+  //powerstats
+alldata.powerintst1="intelligence: "+data.results[0].powerstats.intelligence;
+alldata.powerstrend2="strength: "+data.results[0].powerstats.strength;
+
+alldata.powerspeedrdtx3="speed: "+data.results[0].powerstats.speed;
+
+alldata.powerdurabfthtx4="durability: "+data.results[0].powerstats.durability;
+
+
+alldata.powerpowersixthhtx5="power: "+data.results[0].powerstats.power;
+
+
+alldata.powercombatseventhhtx6="combat: "+data.results[0].powerstats.combat;
+//powerstats
+alldata.biogrplacebirthend2="place-of-birth: "+data.results[0].biography['place-of-birth'];
+
+
+
+alldata.biogrfullnamst1=data.results[0].biography['full-name'];
+
+alldata.biografirstapperacerdtx3="first-appearance: "+data.results[0].biography['first-appearance'];
+
+alldata.biograpublisherfthtx4="publisher: "+data.results[0].biography['publisher'];
+
+
+alldata.biograaligmesixthhtx5="alignment: "+data.results[0].biography['alignment'];
+//biography
+
+//appearance
+
+alldata.appeargenderst="gender: "+data.results[0].appearance['gender'];
+alldata.appearracend="race: "+data.results[0].appearance['race'];
+alldata.appearheightrd="height: "+data.results[0].appearance.height[0]+" "+data.results[0].appearance.height[1];
+alldata.appearweightrth="weight: "+data.results[0].appearance.weight[0]+" "+data.results[0].appearance.weight[1];
+alldata.appeareyecolorfth="eye-color: "+data.results[0].appearance['eye-color'];
+alldata.appearhaircolorsxth="hair-color: "+data.results[0].appearance['hair-color'];
+
+//appearance
+
+//work
+
+alldata.workocccuptionst="occupation: "+data.results[0].work['occupation'];
+alldata.workbacend="base: "+data.results[0].work.base;
+
+
+//work
+//connections
+
+alldata.connectst="group-affiliation: "+data.results[0].connections['group-affiliation'];
+alldata.connecnd="relatives: "+data.results[0].connections['relatives'];
+imgurl=data.results[0].image.url;
+//connections
+
+}).catch((error)=>{
+errorr.innerText="🧐 not present";
+power.classList.remove("active");
+appear.classList.remove("active");
+wor.classList.remove("active");
+ conne.classList.remove("active");
+biogra.classList.remove("active");
+  immgg.src="https://www.superherodb.com/pictures2/portraits/10/100/85.jpg"
+  name.textContent=""
+sttext.textContent=""
+ndtext.textContent=""
+rddtext.textContent=""
+rthtext.textContent=""
+fthtext.textContent=""
+sthtext.textContent=""
+
+inputdispay.style.display="none"
+iputtextnone.style.display="none"
+name.style.display="none"
+
+
+}
+
+)
+  
+  
+}
+
+
+
+
+
+power.addEventListener('click',()=>{
+
+powcheck=true;
+
+if(powcheck===true){
+
+power.classList.add("active");
+appear.classList.remove("active");
+wor.classList.remove("active");
+ conne.classList.remove("active");
+biogra.classList.remove("active");
+
+//
+sttext.textContent=alldata.powerintst1;
+ndtext.textContent=alldata.powerstrend2
+rddtext.textContent=alldata.powerspeedrdtx3
+rthtext.textContent=alldata.powerdurabfthtx4
+fthtext.textContent=alldata.powerpowersixthhtx5
+sthtext.textContent=alldata.powercombatseventhhtx6
+errorr.innerText="";
+//alldata.powerintst1;
+
+
+let name=document.getElementById('name');
+
+let apiimg;
+}
+biocheck=false;
+appcheck=false;
+workcheck=false;
+conneccheck=false;
+})
+
+
+biogra.addEventListener('click',()=>{
+  biocheck=true;
+
+
+if(biocheck===true){
+ 
+  biogra.classList.add("active");
+power.classList.remove("active");
+appear.classList.remove("active");
+   wor.classList.remove("active");
+ conne.classList.remove("active");
+
+  
+  
+
+sttext.textContent=alldata.biogrfullnamst1
+ndtext.textContent=alldata.biogrplacebirthend2
+rddtext.textContent=alldata.biografirstapperacerdtx3
+rthtext.textContent=alldata.biograpublisherfthtx4
+fthtext.textContent=alldata.biograaligmesixthhtx5
+sthtext.textContent=""
+errorr.innerText="";
+
+
+
+}
+
+  powcheck=false;
+
+
+appcheck=false;
+workcheck=false;
+conneccheck=false;
+
+
+
+})
+
+
+appear.addEventListener('click',()=>{
+appcheck=true;
+if(appcheck===true){
+
+appear.classList.add("active");
+power.classList.remove("active");
+
+   wor.classList.remove("active");
+ conne.classList.remove("active");
+biogra.classList.remove("active");
+
+
+
+sttext.textContent=alldata.appeargenderst
+ndtext.textContent=alldata.appearracend
+rddtext.textContent=alldata.appearheightrd
+rthtext.textContent=alldata.appearweightrth
+fthtext.textContent=alldata.appeareyecolorfth
+sthtext.textContent=alldata.appearhaircolorsxth
+errorr.innerText="";
+}
+
+powcheck=false;
+
+biocheck=false;
+
+workcheck=false;
+conneccheck=false;
+
+})
+
+
+wor.addEventListener('click',()=>{
+  workcheck=true;
+if(workcheck===true){
+
+appear.classList.remove("active");
+power.classList.remove("active");
+
+   wor.classList.add("active");
+ conne.classList.remove("active");
+biogra.classList.remove("active");
+
+
+sttext.textContent=""
+ndtext.textContent=""
+rddtext.textContent=alldata.workocccuptionst
+rthtext.textContent=""
+fthtext.textContent=""
+sthtext.textContent=alldata.workbacend
+errorr.innerText="";
+
+}
+
+powcheck=false;
+
+biocheck=false;
+appcheck=false;
+
+conneccheck=false;
+
+})
+
+conne.addEventListener('click',()=>{
+
+conneccheck=true;
+if(conneccheck===true){
+
+appear.classList.remove("active");
+power.classList.remove("active");
+
+   wor.classList.remove("active");
+ conne.classList.add("active");
+biogra.classList.remove("active");
+
+sttext.textContent="";
+ndtext.textContent=alldata.connectst
+rddtext.textContent=""
+rthtext.textContent=alldata.connecnd
+fthtext.textContent=""
+sthtext.textContent=""
+errorr.innerText="";
+
+}
+
+
+
+
+powcheck=false;
+
+biocheck=false;
+appcheck=false;
+workcheck=false;
+
+
+})
+
+
+
+
+
+btn.addEventListener('click',api);
+
+</script>
+<!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+
+</body>
+</html>
